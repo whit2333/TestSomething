@@ -1,7 +1,7 @@
 
 GeneralLibName := ATestGeneral
 
-GeneralLibObjs := lib/TestSomething.o \
+GeneralLibObjs := lib/TestSomething.o 
 
 FortranLibObjs := 
 
@@ -17,7 +17,7 @@ $(GeneralLibObjs) : $(builddir)/%.o : %.h
 #$(srcdir)/$(GeneralLibName)Dict.cxx $(srcdir)/$(GeneralLibName)Dict.h : $(GeneralLibHead)\
 
 $(srcdir)/$(GeneralLibName)Dict.cxx : $(GeneralLibHead) $(incdir)/$(GeneralLibName)_LinkDef.h 
-	rootcling -f $(srcdir)/$(GeneralLibName)Dict.cxx $(RCINTFLAGS)  \
+	rootcling -v4 -f $(srcdir)/$(GeneralLibName)Dict.cxx $(RCINTFLAGS)  \
 	$(GeneralLibHead)   $(incdir)/$(GeneralLibName)_LinkDef.h 
 	#mv $(srcdir)/$(GeneralLibName)Dict.h $(incdir)/.
 #_____________________________________________________________________________/

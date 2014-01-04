@@ -20,11 +20,12 @@ SOLIBS := $(SOLIBNAMES:%=lib/lib%.so.$(LIBMAJOR).$(LIBMINOR) )
 SOLINKLIBS := $(SOLIBNAMES:%=-Llib/lib%.so.$(LIBMAJOR).$(LIBMINOR) )
 
 
-RCINTFLAGS += -c -std=c++11
+RCINTFLAGS += -c  -p 
+#-std=c++11
 
 CPPFLAGS += $(shell root-config --cflags )
 CPPFLAGS += -Iinclude -I.
-#CPPFLAGS +=  -g -pipe  
+CPPFLAGS +=  -g -pipe  
 
 #CPPFLAGS += -D"ATest_DATA_DIR=\"$(shell echo ${ATest_DATA_DIR})\"" 
 #RCINTFLAGS += -D'ATest_DATA_DIR=$(shell echo ${ATest_DATA_DIR})' 
