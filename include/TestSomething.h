@@ -28,7 +28,7 @@ class TestSomething : public TNamed {
             std::cout << i << std::endl;
          }
          //int norm = 33; 
-         //std::for_each(vec.begin(), vec.end(), [](int i) { std::cout << i << "^2 = " << i*i << std::endl; /*norm=i*i*norm;*/ });
+         std::for_each(vec.begin(), vec.end(), [](int i) { std::cout << i << "^2 = " << i*i << std::endl; /*norm=i*i*norm;*/ });
          //auto l = [](double* xs, double *ps) { return xs[0]*xs[0]; };
          //TF1 * f = new TF1("f", l, 0, 100, 0);
          //f->Draw();
