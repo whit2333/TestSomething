@@ -20,26 +20,22 @@ SOLIBS := $(SOLIBNAMES:%=lib/lib%.so.$(LIBMAJOR).$(LIBMINOR) )
 SOLINKLIBS := $(SOLIBNAMES:%=-Llib/lib%.so.$(LIBMAJOR).$(LIBMINOR) )
 
 
-RCINTFLAGS += -c 
-#RCINTFLAGS += -DDebug 
+RCINTFLAGS += -c -std=c++11
 
 CPPFLAGS += $(shell root-config --cflags )
 CPPFLAGS += -Iinclude -I.
-CPPFLAGS +=  -g -pipe  
-#-D_LARGEFILE_SOURCE -fno-strict-aliasing
+#CPPFLAGS +=  -g -pipe  
 
-CPPFLAGS += -D"ATest_DATA_DIR=\"$(shell echo ${ATest_DATA_DIR})\"" 
+#CPPFLAGS += -D"ATest_DATA_DIR=\"$(shell echo ${ATest_DATA_DIR})\"" 
 #RCINTFLAGS += -D'ATest_DATA_DIR=$(shell echo ${ATest_DATA_DIR})' 
 
 LDLIBS += $(shell root-config --ldflags)
 LDLIBS += $(shell root-config --glibs --libs )
-#LDLIBS += -lgfortran
-#LDLIBS += -lg2c -lgfortran
 
 CXX = g++
 FC  = gfortran
 
-CXXFLAGS  += -O2 -Wall -fPIC 
+CXXFLAGS  += -O2 -Wall -fPIC -std=c++11
 CXXFLAGS  += $(CPPFLAGS)
 
 F77FLAGS += -g -O2 -Wall -fPIC -Iinclude 
@@ -96,7 +92,6 @@ snapshot:
 
 clean:
 	rm -f lib/libATest*
-	rm -f lib/InSANE*Dict.o
 	rm -f lib/*.o
 	rm -f bin/atest
 	rm -f src/*Dict.cxx
@@ -112,10 +107,5 @@ include  $(makefiledir)/General.mk
 link:
 	cd lib/ ; ln -sf libATestGeneral.so.$(LIBMAJOR).$(LIBMINOR) libATestGeneral.so
 	cd lib/ ; ln -sf libATest.so.$(LIBMAJOR).$(LIBMINOR) libATest.so
-# 	cp lib/*.so $(HOME)/lib/.
-# 	cp lib/*.so.* $(HOME)/lib/.
-# 	cd lib/ ; ln -sf libInSANECut.so.$(LIBMAJOR).$(LIBMINOR) libInSANECut.so
-# 	cd lib/ ; ln -sf libInSANEGeo.so.$(LIBMAJOR).$(LIBMINOR) libInSANEGeo.so
-# 	cd lib/ ; ln -sf libInSANECluster.so.$(LIBMAJOR).$(LIBMINOR) libInSANECluster.so
-# 	cd lib/ ; ln -sf libInSANEEvent.so.$(LIBMAJOR).$(LIBMINOR) libInSANEEvent.so
-# 	cd lib/ ; ln -sf libInSANE.so.$(LIBMAJOR).$(LIBMINOR) libInSANE.so
+
+
